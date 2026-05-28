@@ -1,7 +1,9 @@
-# busca_chamba — Peru Finance & Strategy or [Insert Roles] Job Scraper
+# busca_chamba — Peru Senior Finance & Strategy Job Scraper
 
-Scrapes senior finance, strategy, and business-development or [Insert Role] roles in Peru from
-**LinkedIn**, **Bumeran**, **Computrabajo**, and **Indeed Peru**.
+Automated daily job scraper for senior finance, strategy, and business development
+roles in Peru. Aggregates listings from Computrabajo, LinkedIn, and 20+ direct
+company career pages (Scotiabank, BBVA, Credicorp, Michael Page, Krealo, and more)
+into a clean Excel report.
 
 Results are stored in a local SQLite database (`jobs.db`) and exported to a
 formatted Excel file (`jobs_today.xlsx`).
@@ -37,10 +39,9 @@ pip install -r requirements.txt
 python scraper.py
 
 # Run a single scraper only
-python scraper.py --scraper bumeran
 python scraper.py --scraper computrabajo
 python scraper.py --scraper linkedin
-python scraper.py --scraper indeed
+python scraper.py --scraper empresas
 
 # Custom output filename
 python scraper.py --output empleos_mayo.xlsx
@@ -51,17 +52,40 @@ python scraper.py --no-export
 
 ---
 
+## Sources
+
+| Source | Method |
+|--------|--------|
+| **Computrabajo** | HTML scraping with multiple selector fallbacks |
+| **LinkedIn** | Public guest Jobs API — no login required |
+| **Scotiabank Peru** | Direct career page |
+| **BBVA Peru** | Workday API |
+| **Interbank** | Workday API + Oracle HCM |
+| **Credicorp / Mibanco** | Workday API |
+| **Alicorp** | Workday API + Phenom portal |
+| **Krealo** | Direct career page |
+| **Michael Page Peru** | Headhunter portal |
+| **UNACEM** | Hiringroom ATS |
+| **Panamerican Silver** | Hiringroom ATS |
+| **Grupo Gloria** | Direct career page |
+| **Bosch Peru** | SmartRecruiters API |
+| **+ others** | See `empresa_urls.json` for full list |
+
+---
+
 ## Output
 
 ### jobs_today.xlsx
 
-| Empresa | Puesto | Ubicación | Salario | Fecha | Seniority | URL | Fuente |
-|---------|--------|-----------|---------|-------|-----------|-----|--------|
+| Estado | Fecha | Días en BD | Fuente | Empresa | Puesto | Sector | Ubicación | Seniority | Salario | URL |
+|--------|-------|-----------|--------|---------|--------|--------|-----------|-----------|---------|-----|
 
-- Color-coded by seniority (yellow = Director/C-Level, green = Gerente, blue = Jefe/Senior)
+- **Estado column:** 🆕 Nuevo = added today, 📋 Visto = added in last 7 days
+- **Sorted by:** new jobs first, then by date
+- **Auto-expires** jobs older than 7 days (DB retention for deduplication)
 - URLs are clickable hyperlinks
-- Frozen header row + auto-filter
-- "Resumen" sheet with counts by source and seniority
+- Frozen header row + auto-filter on all columns
+- "Resumen" sheet: nuevos hoy, total activos (7 días), counts by source / sector / seniority
 
 ### jobs.db (SQLite)
 
@@ -69,7 +93,7 @@ python scraper.py --no-export
 -- Query example
 SELECT title, company, location, salary, source
 FROM jobs
-WHERE DATE(scraped_at) = DATE('now')
+WHERE DATE(fecha_ingreso_db) = DATE('now')
   AND seniority = 'Director / C-Level'
 ORDER BY company;
 ```
@@ -124,9 +148,10 @@ python -m scraper
 | Site | Notes |
 |------|-------|
 | **LinkedIn** | Uses the public guest Jobs API — no login needed. May be rate-limited after heavy use. |
-| **Bumeran** | Uses the internal JSON API with HTML fallback. Very reliable. |
+| **Bumeran** | Disabled — strong bot detection, JS-rendered site with no static content. |
 | **Computrabajo** | HTML scraping with multiple selector fallbacks. Reliable. |
-| **Indeed** | Has strong bot detection. Results vary; may require manual cookie injection for consistent access. |
+| **Indeed** | Disabled — strong bot detection. |
+| **CSOD / Rankmi** | JS-rendered ATS portals — require browser automation (not yet implemented). |
 
 If a site fails, the script continues with the others — no crash.
 
@@ -139,6 +164,7 @@ busca_chamba/
 ├── scraper.py            # Main entry point
 ├── filters.py            # Keyword + seniority filtering
 ├── export.py             # Excel export with formatting
+├── empresa_urls.json     # Company career page URLs + sector metadata
 ├── requirements.txt
 ├── README.md
 ├── jobs.db               # Created on first run
@@ -147,7 +173,8 @@ busca_chamba/
     ├── __init__.py
     ├── base.py           # Base class: rotating user agents, retries
     ├── linkedin.py
-    ├── bumeran.py
+    ├── bumeran.py        # Disabled (bot detection)
     ├── computrabajo.py
-    └── indeed.py
+    ├── indeed.py         # Disabled (bot detection)
+    └── empresas_peru.py  # Direct company career pages (20+ companies)
 ```
