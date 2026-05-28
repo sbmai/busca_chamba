@@ -1,0 +1,342 @@
+{
+  "_comentario": "Agregar nuevas empresas aquí sin tocar el código. Campos: nombre, url, sector, activo, notas (opcional).",
+  "_instrucciones": "Si una empresa retorna 404 o DNS error, busca su portal de empleo directo (Workday, Greenhouse, Lever, SmartRecruiters) y actualiza la URL aquí.",
+  "empresas": [
+    {
+      "nombre": "BCP",
+      "url": "https://bcp.wd1.myworkdayjobs.com/BCPCareers",
+      "sector": "Finanzas y Banca",
+      "activo": false,
+      "notas": "Desactivado — BCP publica sus ofertas en LinkedIn (ya cubierto por el scraper LinkedIn). Reactivar si se necesita deduplicar fuente."
+    },
+    {
+      "nombre": "Intercorp",
+      "url": "https://intercorp.wd1.myworkdayjobs.com/IntercorpCareers",
+      "sector": "Conglomerado",
+      "activo": true,
+      "notas": "Portal Workday del grupo Intercorp. API: /wday/cxs/intercorp/IntercorpCareers/jobs"
+    },
+    {
+      "nombre": "Scotiabank Peru",
+      "url": "https://jobs.scotiabank.com/search/?q=peru&q2=&alertId=&locationsearch=peru&title=&shifttype=&department=&geolocation=",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal global Scotiabank filtrado por Peru."
+    },
+    {
+      "nombre": "BBVA Peru",
+      "url": "https://bbva.wd3.myworkdayjobs.com/BBVA?locationCountry=0eb156ca580c4db786a7894bdaa77450",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Workday BBVA filtrado por Peru. API: /wday/cxs/bbva/BBVA/jobs"
+    },
+    {
+      "nombre": "Alicorp",
+      "url": "https://alicorp.wd1.myworkdayjobs.com/AlicorpCareers",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Portal Workday de Alicorp. API: /wday/cxs/alicorp/AlicorpCareers/jobs"
+    },
+    {
+      "nombre": "Grupo Gloria",
+      "url": "https://www.grupogloria.com/trabaja-con-nosotros",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Página estática. Verificar si usan un ATS externo."
+    },
+    {
+      "nombre": "Cencosud Peru",
+      "url": "https://cencosud.csod.com/ux/ats/careersite/10/home?c=cencosud",
+      "sector": "Retail",
+      "activo": true,
+      "notas": "Portal Cornerstone OnDemand (CSOD) de Cencosud. JS-rendered — retorna 0 hasta implementar Selenium."
+    },
+    {
+      "nombre": "Falabella Peru",
+      "url": "https://muevete.falabella.com/explorar",
+      "sector": "Retail",
+      "activo": true,
+      "notas": "Portal de movilidad interna Falabella Peru. Scraper usa HTML genérico para extraer título, área y ubicación. URL verificada por el usuario."
+    },
+    {
+      "nombre": "Rimac Seguros",
+      "url": "https://rimac.wd3.myworkdayjobs.com/RimacCareers",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Workday de Rimac. API: /wday/cxs/rimac/RimacCareers/jobs"
+    },
+    {
+      "nombre": "Pacifico Seguros",
+      "url": "https://www.pacifico.com.pe/nosotros/trabaja-con-nosotros",
+      "sector": "Finanzas y Banca",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado. No tiene página de empleos pública activa."
+    },
+    {
+      "nombre": "Belcorp",
+      "url": "https://www.belcorp.biz/es/trabaja-con-nosotros",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Ruta /es/ — la ruta raíz dio 404 tras redirect a belcorp.com."
+    },
+    {
+      "nombre": "Backus AB InBev",
+      "url": "https://careers.ab-inbev.com/search/?q=peru&locationsearch=peru",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": false,
+      "notas": "Desactivado — DNS failure confirmado. Buscar URL directa del portal de empleo Backus Peru."
+    },
+    {
+      "nombre": "Movistar Peru",
+      "url": "https://talento.telefonica.com/empleo/?pais=PE",
+      "sector": "Telecomunicaciones",
+      "activo": false,
+      "notas": "Desactivado — DNS failure confirmado en talento.telefonica.com."
+    },
+    {
+      "nombre": "Entel Peru",
+      "url": "https://trabajaconentel.entel.pe",
+      "sector": "Telecomunicaciones",
+      "activo": false,
+      "notas": "Desactivado — DNS failure confirmado en trabajaconentel.entel.pe."
+    },
+    {
+      "nombre": "Laive",
+      "url": "https://www.laive.com.pe/trabaja-con-nosotros",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": false,
+      "notas": "Desactivado — DNS failure confirmado. No tiene página de empleos pública activa."
+    },
+    {
+      "nombre": "InRetail",
+      "url": "https://careers.inretail.pe",
+      "sector": "Retail",
+      "activo": false,
+      "notas": "Desactivado — DNS failure confirmado en careers.inretail.pe."
+    },
+    {
+      "nombre": "Primax",
+      "url": "https://www.primax.com.pe/trabaja-con-nosotros",
+      "sector": "Energía e Industria",
+      "activo": true,
+      "notas": "Página estática encontrada pero sin listings en HTML. Puede usar iframe/JS."
+    },
+    {
+      "nombre": "Interbank",
+      "url": "https://interbank.wd1.myworkdayjobs.com/IBKCareers",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Workday de Interbank. API: /wday/cxs/interbank/IBKCareers/jobs"
+    },
+    {
+      "nombre": "Mibanco",
+      "url": "https://mibanco.wd3.myworkdayjobs.com/mibanco",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Workday de MiBanco (parte del Grupo Credicorp)."
+    },
+    {
+      "nombre": "Credicorp",
+      "url": "https://credicorp.wd1.myworkdayjobs.com/Credicorp",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Workday de Credicorp holding."
+    },
+    {
+      "nombre": "Yape",
+      "url": "https://bcp.wd1.myworkdayjobs.com/bcp_yape",
+      "sector": "Finanzas y Banca",
+      "activo": false,
+      "notas": "Desactivado — Yape usa el mismo portal Workday que BCP. Activar si se crea un portal independiente."
+    },
+    {
+      "nombre": "Ferreyros",
+      "url": "https://ferreyros.com.pe/trabaja-con-nosotros",
+      "sector": "Energía e Industria",
+      "activo": true,
+      "notas": "Portal de empleo directo de Ferreyros (Ferreycorp). Puede requerir scraping HTML."
+    },
+    {
+      "nombre": "Tottus Peru",
+      "url": "https://tottus.falabella.com.pe/tottus-pe/trabaja-con-nosotros",
+      "sector": "Retail",
+      "activo": true,
+      "notas": "Portal de empleo Tottus Peru (subsidiaria Falabella)."
+    },
+    {
+      "nombre": "Saga Falabella",
+      "url": "https://www.falabella.com.pe/trabaja-con-nosotros",
+      "sector": "Retail",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en falabella.com.pe/trabaja-con-nosotros. Usar entrada 'Falabella Peru' con URL muevete.falabella.com."
+    },
+    {
+      "nombre": "Mapfre Peru",
+      "url": "https://www.mapfre.com.pe/trabaja-con-nosotros",
+      "sector": "Finanzas y Banca",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en mapfre.com.pe/trabaja-con-nosotros."
+    },
+    {
+      "nombre": "Southern Copper",
+      "url": "https://www.southernperu.com/trabaja-con-nosotros",
+      "sector": "Minería",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en southernperu.com/trabaja-con-nosotros."
+    },
+    {
+      "nombre": "Antamina",
+      "url": "https://www.antamina.com/trabaja-con-nosotros",
+      "sector": "Minería",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en antamina.com/trabaja-con-nosotros."
+    },
+    {
+      "nombre": "Camposol",
+      "url": "https://www.camposol.com.pe/careers",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Portal de empleo Camposol (agroexportadora)."
+    },
+    {
+      "nombre": "Repsol Peru",
+      "url": "https://www.repsol.com/es/carreras/index.cshtml",
+      "sector": "Energía e Industria",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en repsol.com/es/carreras."
+    },
+    {
+      "nombre": "Grupo Romero",
+      "url": "https://gruporomero.com.pe/trabaja-con-nosotros",
+      "sector": "Conglomerado",
+      "activo": false,
+      "notas": "Desactivado — 404 confirmado en gruporomero.com.pe/trabaja-con-nosotros."
+    },
+    {
+      "nombre": "Credicorp Capital",
+      "url": "https://www.carrerascredicorpcapital.com/profesionales",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal de carreras Credicorp Capital (banca de inversión). URL verificada por el usuario."
+    },
+    {
+      "nombre": "Credicorp Programas",
+      "url": "https://carreras.grupocredicorp.com/programas/",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Programas de carrera del Grupo Credicorp (MBA / trainees). URL verificada por el usuario."
+    },
+    {
+      "nombre": "Interbank Oracle",
+      "url": "https://epvw.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/es/sites/CX_1/jobs?mode=location",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal Oracle HCM Cloud de Interbank (complementario al Workday). URL verificada por el usuario."
+    },
+    {
+      "nombre": "Intercorp Retail Oracle",
+      "url": "https://egjl.fa.us6.oraclecloud.com/hcmUI/CandidateExperience/es/sites/CX_1/requisitions?lastSelectedFacet=CATEGORIES&mode=location&selectedCategoriesFacet=300000001909532",
+      "sector": "Conglomerado",
+      "activo": true,
+      "notas": "Portal Oracle HCM Cloud de Intercorp Retail Group. URL verificada por el usuario."
+    },
+    {
+      "nombre": "Alicorp Portal",
+      "url": "https://oportunidadesalicorp.com/search/?createNewAlert=false&q=&locationsearch=",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Portal alternativo de Alicorp (plataforma Phenom People / iCIMS). URL verificada por el usuario."
+    },
+    {
+      "nombre": "Belcorp Rankmi",
+      "url": "https://ats.rankmi.com/tenants/771/organizations/belcorp-connect?tags=STRATEGY+AND+FINNANCE",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Portal Rankmi de Belcorp filtrado por Strategy & Finance. JS-rendered — retorna 0 hasta implementar Selenium."
+    },
+    {
+      "nombre": "UNACEM",
+      "url": "https://unacemperu.hiringroom.com/jobs",
+      "sector": "Industria",
+      "activo": true,
+      "notas": "Portal Hiringroom de UNACEM Peru. URL verificada por el usuario."
+    },
+    {
+      "nombre": "Panamerican Silver",
+      "url": "https://panamericansilver.hiringroom.com/jobs",
+      "sector": "Minería",
+      "activo": true,
+      "notas": "Portal Hiringroom de Pan American Silver Peru. URL verificada por el usuario."
+    },
+    {
+      "nombre": "Pacasmayo",
+      "url": "https://grupo-pacasmayo.pandape.computrabajo.com/Vacancy/Vacancies?search=true&Keywords=Finanzas",
+      "sector": "Industria",
+      "activo": true,
+      "notas": "Portal Pandape (Computrabajo ATS) de Grupo Pacasmayo. URL verificada por el usuario."
+    },
+    {
+      "nombre": "SAP Peru",
+      "url": "https://jobs.sap.com/search/?q=&locationsearch=Per%C3%BA",
+      "sector": "Tecnología",
+      "activo": true,
+      "notas": "Portal de empleo SAP filtrado por Peru. URL verificada por el usuario."
+    },
+    {
+      "nombre": "Red Bull Peru",
+      "url": "https://jobs.redbull.com/pe-es",
+      "sector": "Consumo Masivo y Alimentos",
+      "activo": true,
+      "notas": "Portal de empleo Red Bull Peru. URL verificada por el usuario."
+    },
+    {
+      "nombre": "3M Peru",
+      "url": "https://3m.wd1.myworkdayjobs.com/es/Search?Location_Country=0eb156ca580c4db786a7894bdaa77450",
+      "sector": "Industria",
+      "activo": true,
+      "notas": "Portal Workday de 3M filtrado por Peru. API: /wday/cxs/3m/Search/jobs"
+    },
+    {
+      "nombre": "Krealo",
+      "url": "https://careers.krealo.pe/jobs",
+      "sector": "Finanzas y Banca",
+      "activo": true,
+      "notas": "Portal de empleo Krealo (venture builder digital de Credicorp). URL verificada por el usuario."
+    },
+    {
+      "nombre": "Bosch Peru",
+      "url": "https://careers.smartrecruiters.com/BoschGroup/peru",
+      "sector": "Industria",
+      "activo": true,
+      "notas": "Portal SmartRecruiters de Bosch Group filtrado por Peru. API: /v1/companies/BoschGroup/postings?country=PE"
+    },
+    {
+      "nombre": "Belmond Peru",
+      "url": "https://careers.belmond.com/jobs?country=Peru&department=Finance+%26+Accounting",
+      "sector": "Turismo",
+      "activo": true,
+      "notas": "Portal de empleo Belmond filtrado por Peru / Finance. Probablemente usa Greenhouse custom domain."
+    },
+    {
+      "nombre": "Michael Page Peru",
+      "url": "https://www.michaelpage.pe/jobs/finanzas",
+      "sector": "Headhunter",
+      "activo": true,
+      "notas": "Portal Michael Page Peru — sección Finanzas. Headhunter; los avisos son de empresas cliente."
+    },
+    {
+      "nombre": "Ransa",
+      "url": "",
+      "sector": "Logística",
+      "activo": false,
+      "notas": "Perfil Bumeran — desactivado. Bumeran inhabilitado por bot detection (JS-rendered). Buscar URL directa de empleos Ransa."
+    },
+    {
+      "nombre": "Grupo EFE",
+      "url": "",
+      "sector": "Retail",
+      "activo": false,
+      "notas": "Perfil Bumeran — desactivado. Bumeran inhabilitado por bot detection (JS-rendered). Buscar URL directa de empleos Grupo EFE."
+    }
+  ]
+}
