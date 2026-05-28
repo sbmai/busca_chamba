@@ -1,6 +1,6 @@
-# busca_chamba — Peru Finance & Strategy Job Scraper
+# busca_chamba — Peru Finance & Strategy or [Insert Roles] Job Scraper
 
-Scrapes senior finance, strategy, and business-development roles in Peru from
+Scrapes senior finance, strategy, and business-development or [Insert Role] roles in Peru from
 **LinkedIn**, **Bumeran**, **Computrabajo**, and **Indeed Peru**.
 
 Results are stored in a local SQLite database (`jobs.db`) and exported to a
